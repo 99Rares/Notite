@@ -18,10 +18,6 @@ public class NoteController {
         return noteRepository;
     }
 
-    public void setNoteRepository(NoteRepository noteRepository) {
-        this.noteRepository = noteRepository;
-    }
-
 
     public void populateListWithNotes() throws IOException {
         noteRepository.setNotes(new NoteFileRepository().loadData());

@@ -29,6 +29,6 @@ public class Note {
     public String toString() {
         return
                 "Title: " + title + '\n' +
-                "Content:\n" + content+"\n";
+                        "Content:\n" + content + "\n";
     }
 }

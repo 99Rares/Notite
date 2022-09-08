@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NoteFileRepository implements FileRepository<Note> {
-    private static FileWriter file;
+    private static FileWriter fileWriter;
 
     @Override
     public void writeData(Iterable<Note> list) {
@@ -22,17 +22,20 @@ public class NoteFileRepository implements FileRepository<Note> {
         jsonFactory.configure(JsonGenerator.Feature.AUTO_CLOSE_TARGET, false);
         ObjectMapper mapper = new ObjectMapper(jsonFactory);
         try {
-            file = new FileWriter("notes.json");
+            File file = new File("notes.json");
+            fileWriter = new FileWriter(file);
             JSONArray notes = new JSONArray();
+
             list.forEach(notes::add);
+            notes.forEach(System.out::println);
             object.put("Notes", notes);
-            mapper.writeValue(file, object);
+            mapper.writeValue(fileWriter, object);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                file.flush();
-                file.close();
+                fileWriter.flush();
+                fileWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

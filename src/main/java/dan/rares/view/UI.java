@@ -47,7 +47,7 @@ public class UI {
         System.out.println("\nEnter Note Title");
         String title = console.nextLine();
         Note note = noteController.delete(title);
-
+        System.out.println("Deleted note " + note.getTitle() + "!");
     }
 
     private void listSpecificNote() {
@@ -72,7 +72,8 @@ public class UI {
         String content = console.nextLine();
         Note note = new Note(title, content);
         note = noteController.save(note);
-        System.out.println("Saved note "+ note.getTitle() +"!");
+        if (note != null)
+            System.out.println("Saved note " + note.getTitle() + "!");
 
     }
 

@@ -48,10 +48,10 @@ public class NoteRepository implements ICrudRepository<Note> {
             if (title == null)
                 throw new NullTitleException("id most not be null");
 
-            for (Note note : notes)  // Searching for the student with studentId "id"
+            for (Note note : notes)  // Searching for the notes with title "title"
                 if (Objects.equals(note.getTitle(), title)) {
-                    notes.remove(note);  // If the lists contains the student with studentId "id", remove it from the list
-                    return note;  // and return the removed student
+                    notes.remove(note);  // If the lists contains the note with the title "title", remove it from the list
+                    return note;  // and return the removed note
                 }
             System.err.println("Note not found!");
         } catch (NullTitleException e) {
@@ -99,6 +99,6 @@ public class NoteRepository implements ICrudRepository<Note> {
             e.printStackTrace();
         }
 
-        return null;  // if not found
+        return null;
     }
 }
