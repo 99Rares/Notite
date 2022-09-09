@@ -21,8 +21,7 @@ public class UI {
                 3. List a specific note
                 4. Delete a specific note
                 0. Exit
-                """
-        );
+                """);
     }
 
     public void menu() {
@@ -31,15 +30,21 @@ public class UI {
         while (option != 0) {
 
             switch (option) {
-                case 1 -> addNote();
+                case 1 -> {
+                    addNote();
+                    noteController.saveDataToFile();
+                }
                 case 2 -> listAllNotes();
                 case 3 -> listSpecificNote();
-                case 4 -> deleteNote();
+                case 4 -> {
+                    deleteNote();
+                    noteController.saveDataToFile();
+                }
             }
             menuText();
             option = getOption();
+
         }
-        noteController.saveDataToFile();
     }
 
     private void deleteNote() {

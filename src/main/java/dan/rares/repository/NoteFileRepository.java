@@ -27,7 +27,6 @@ public class NoteFileRepository implements FileRepository<Note> {
             JSONArray notes = new JSONArray();
 
             list.forEach(notes::add);
-            notes.forEach(System.out::println);
             object.put("Notes", notes);
             mapper.writeValue(fileWriter, object);
         } catch (IOException e) {
@@ -49,8 +48,8 @@ public class NoteFileRepository implements FileRepository<Note> {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode parser = objectMapper.readTree(reader);
 
-        for (JsonNode i:parser.path("Notes")){
-            Note n =new Note(i.path("title").asText(),i.path("content").asText());
+        for (JsonNode i : parser.path("Notes")) {
+            Note n = new Note(i.path("title").asText(), i.path("content").asText());
             notes.add(n);
         }
         reader.close();

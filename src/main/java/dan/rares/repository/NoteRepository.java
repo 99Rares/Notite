@@ -46,7 +46,7 @@ public class NoteRepository implements ICrudRepository<Note> {
     public Note delete(String title) {
         try {
             if (title == null)
-                throw new NullTitleException("id most not be null");
+                throw new NullTitleException("title most not be null");
 
             for (Note note : notes)  // Searching for the notes with title "title"
                 if (Objects.equals(note.getTitle(), title)) {
@@ -62,35 +62,15 @@ public class NoteRepository implements ICrudRepository<Note> {
     }
 
     @Override
-    public Note update(Note entity) {
-        try {
-            if (entity == null)
-                throw new NullObjectException("entity must not be null");
-
-            for (Note note : notes) // Searching for the student in the list, Matching every student with entity by studentId
-                if (Objects.equals(note.getTitle(), entity.getTitle())) {  // If a match was found
-                    notes.remove(note);  // delete the current student
-                    notes.add(entity);  // add the student with same studentId, but modified attributes
-                    return entity;  // and return it
-                }
-        } catch (NullObjectException e) {
-            e.printStackTrace();
-        }
-
-        return null;  // If no match was found
-    }
-
-    @Override
     public String toString() {
-        return "notes=" + notes +
-                '}';
+        return "notes=" + notes;
     }
 
     @Override
     public Note findOne(String title) {
         try {
             if (title == null)
-                throw new NullTitleException("id most not be null");
+                throw new NullTitleException("title most not be null");
 
             for (Note note : notes)
                 if (Objects.equals(note.getTitle(), title))

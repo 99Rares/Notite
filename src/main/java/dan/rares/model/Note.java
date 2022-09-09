@@ -1,8 +1,8 @@
 package dan.rares.model;
 
 public class Note {
-    private String title;
-    private String content;
+    private final String title;
+    private final String content;
 
     public Note(String title, String content) {
         this.title = title;
@@ -13,22 +13,13 @@ public class Note {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     @Override
     public String toString() {
-        return
-                "Title: " + title + '\n' +
-                        "Content:\n" + content + "\n";
+        return "Title: " + title + '\n' +
+                "Content:\n" + content + "\n";
     }
 }

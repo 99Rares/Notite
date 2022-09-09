@@ -8,7 +8,5 @@ public interface ICrudRepository<E> {
 
     E delete(String title);
 
-    E update(E entity);
-
     E findOne(String title);
 }
